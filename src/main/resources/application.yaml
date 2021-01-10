@@ -1,2 +1,9 @@
 server:
   port: 8081
+spring:
+  rabbitmq:
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
