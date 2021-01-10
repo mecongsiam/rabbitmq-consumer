@@ -9,21 +9,21 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PictureImageConsumer {
+public class LargePictureConsumer {
 
-    private final Logger logger = LoggerFactory.getLogger(PictureImageConsumer.class);
+    private final Logger logger = LoggerFactory.getLogger(LargePictureConsumer.class);
 
     private final ObjectMapper objectMapper;
 
-    public PictureImageConsumer(ObjectMapper objectMapper) {
+    public LargePictureConsumer(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
-    @RabbitListener(queues = {"q.picture.images", "q.picture.image"})
+    @RabbitListener(queues = "q.picture.log")
     public void getMessage(String message) throws JsonProcessingException {
 
         Picture picture = objectMapper.readValue(message, Picture.class);
-        logger.info("Image picture consumed: {}", picture);
+        logger.info("Large picture consumed: {}", picture);
 
     }
 }
