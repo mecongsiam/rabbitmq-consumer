@@ -19,7 +19,7 @@ public class PictureVectorConsumer {
         this.objectMapper = objectMapper;
     }
 
-    @RabbitListener(queues = "q.picture.vector")
+    @RabbitListener(queues = "q.picture.vectors")
     public void getMessage(String message) throws JsonProcessingException {
 
         Picture picture = objectMapper.readValue(message, Picture.class);
