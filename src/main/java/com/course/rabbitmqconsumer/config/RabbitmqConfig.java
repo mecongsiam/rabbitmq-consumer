@@ -21,7 +21,7 @@ public class RabbitmqConfig {
 			SimpleRabbitListenerContainerFactoryConfigurer configurer, ConnectionFactory connectionFactory) {
 		SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
 		configurer.configure(factory, connectionFactory);
-
+		factory.setPrefetchCount(1);
 		factory.setAfterReceivePostProcessors(message -> {
 			var type = message.getMessageProperties().getHeaders().get("type").toString();
 			String typeId = null;

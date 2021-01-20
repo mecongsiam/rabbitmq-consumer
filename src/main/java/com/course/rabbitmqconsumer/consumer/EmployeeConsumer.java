@@ -19,7 +19,7 @@ public class EmployeeConsumer {
         this.objectMapper = objectMapper;
     }
 
-    @RabbitListener(queues = "course.employee")
+    @RabbitListener(queues = "course.employee",containerFactory = "rabbitListenerContainerFactory")
     public void readMessage(String message) throws JsonProcessingException {
 
         Employee employee = objectMapper.readValue(message, Employee.class);
