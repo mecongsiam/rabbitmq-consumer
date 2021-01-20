@@ -10,3 +10,4 @@ spring:
           max-interval: 10s
           max-attempts: 5
           multiplier: 2
+        prefetch: 1
